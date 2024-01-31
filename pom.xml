@@ -27,6 +27,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+		 <!-- facilitar o uso do Java Persistence API (JPA) para acesso a dados em aplicações Spring. 
+		 O Spring Boot Starter Data JPA inclui configurações padrão, bibliotecas e dependências necessárias 
+		 para trabalhar com JPA de maneira simplificada. -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.7.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
