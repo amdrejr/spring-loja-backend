@@ -13,7 +13,7 @@ import com.amdrejr.springlojabackend.entities.Category;
 import com.amdrejr.springlojabackend.services.CategoryService;
 
 @RestController
-@RequestMapping("/categorys")
+@RequestMapping("/categories")
 public class CategoryController {
     @Autowired
     CategoryService categoryService;

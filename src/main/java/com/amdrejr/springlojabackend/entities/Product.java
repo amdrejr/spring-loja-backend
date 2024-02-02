@@ -8,8 +8,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_product")
@@ -21,7 +23,11 @@ public class Product implements Serializable {
     private String description;
     private Double price;
     private String imgUrl;
-    @Transient
+
+    @ManyToMany
+    @JoinTable(name = "tb_product_category", 
+        joinColumns = @JoinColumn(name = "product_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
     // já instanciar a categories garante que ela não inicie com valor null, mas com um HashSet vazio.
     
@@ -92,6 +98,12 @@ public class Product implements Serializable {
         } else if (!id.equals(other.id))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+                + ", imgUrl=" + imgUrl + ", categories=" + categories + "]";
     }
 
 }
