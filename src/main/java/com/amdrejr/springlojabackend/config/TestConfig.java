@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.amdrejr.springlojabackend.entities.Category;
 import com.amdrejr.springlojabackend.entities.Order;
 import com.amdrejr.springlojabackend.entities.OrderItem;
+import com.amdrejr.springlojabackend.entities.Payment;
 import com.amdrejr.springlojabackend.entities.Product;
 import com.amdrejr.springlojabackend.entities.User;
 import com.amdrejr.springlojabackend.entities.enums.OrderStatus;
@@ -68,6 +69,11 @@ public class TestConfig implements CommandLineRunner {
         OrderItem oi3 = new OrderItem(o2, p1, 5, p1.getPrice());
 
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3));
+
+        Payment pay1 = new Payment(null, Instant.now(), o1);
+        o1.setPayment(pay1);
+
+        orderRepository.save(o1);
     }
 }
 
