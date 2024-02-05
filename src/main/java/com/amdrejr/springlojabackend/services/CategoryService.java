@@ -17,7 +17,7 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Category findById(Long id) {
+    public Category findById(long id) {
         return categoryRepository.findById(id).orElse(null);
     }
 }
