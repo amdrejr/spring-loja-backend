@@ -35,6 +35,7 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
+    @SuppressWarnings("null")
     @Override
     public void run(String... args) throws Exception {
         Category c1 = new Category(null, "Smartphones");
