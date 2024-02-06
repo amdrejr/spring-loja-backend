@@ -12,6 +12,8 @@ import com.amdrejr.springlojabackend.repositories.UserRepository;
 import com.amdrejr.springlojabackend.services.exceptions.DataBaseException;
 import com.amdrejr.springlojabackend.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class UserService {
     @Autowired
@@ -38,9 +40,13 @@ public class UserService {
     }
 
     public User update(long id, User user) {
-        User entity = userRepository.getReferenceById(id);
-        updateData(entity, user);
-        return userRepository.save(entity);
+        try {
+            User entity = userRepository.getReferenceById(id);
+            updateData(entity, user);
+            return userRepository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(user);
+        }
     }
 
     private void updateData(User entity, User user) {
